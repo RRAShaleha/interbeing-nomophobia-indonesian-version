@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Kuesioner Nomophobia (Versi Indonesia, 8 Item – 4 Poin)</title>
+<meta name="description" content="Kuesioner self-assessment Nomophobia versi Indonesia (8 item) berbasis adaptasi NMP-Q. Skala 1–4. Bukan alat diagnosis." />
+<style>
+  :root{
+    --bg:#f7f8f9; --card:#ffffff; --ink:#1f2937; --muted:#6b7280; --accent:#0ea5e9;
+    --ok:#16a34a; --warn:#f59e0b; --bad:#ef4444;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; color:var(--ink); background:var(--bg)}
+  .wrap{max-width:880px; margin:32px auto; padding:0 16px}
+  .card{background:var(--card); border-radius:18px; padding:24px; box-shadow:0 6px 24px rgba(15,23,42,.06)}
+  h1{margin:.2rem 0 .6rem; font-size:clamp(24px,3.2vw,34px)}
+  p.lead{color:var(--muted); margin-top:0}
+  .item{padding:16px 0; border-top:1px solid #eef0f3}
+  .item:first-of-type{border-top:0}
+  .q{font-weight:600}
+  .scale{display:flex; gap:8px; margin-top:10px; flex-wrap:wrap}
+  .scale label{flex:1 1 200px; display:flex; align-items:center; gap:8px; background:#f3f4f6; padding:10px 12px; border-radius:12px; cursor:pointer}
+  .scale input{accent-color:var(--accent)}
+  .hint{color:var(--muted); font-size:13px}
+  .actions{display:flex; gap:12px; margin-top:20px; flex-wrap:wrap}
+  button{border:0; background:var(--accent); color:#fff; padding:12px 16px; border-radius:12px; font-weight:700; cursor:pointer}
+  button.secondary{background:#e5e7eb; color:#111827}
+  .result{margin-top:20px; padding:16px; border-radius:14px; background:#f1f5f9; display:none}
+  .badge{display:inline-block; padding:4px 10px; border-radius:999px; font-weight:700; font-size:13px; margin-left:8px}
+  .low{background:#dcfce7; color:#14532d}
+  .moderate{background:#fef3c7; color:#78350f}
+  .high{background:#fee2e2; color:#7f1d1d}
+  .veryhigh{background:#ffe4e6; color:#831843}
+  details{margin-top:10px}
+  footer{margin-top:20px; color:var(--muted); font-size:13px}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" role="region" aria-labelledby="title">
+      <h1 id="title">Kuesioner Nomophobia (8 Item – 4 Poin)</h1>
+      <p class="lead">
+        Ini <strong>self-assessment</strong> singkat tentang rasa cemas/khawatir saat jauh dari ponsel.
+        Jawab jujur, <strong>1 = Sangat Tidak Setuju</strong> s.d. <strong>4 = Sangat Setuju</strong>.<br>
+        <span class="hint">Bukan alat diagnosis. Hasilnya untuk refleksi pribadi.</span>
+      </p>
+
+      <!-- FORM -->
+      <form id="form">
+        <!-- Losing connectedness -->
+        <div class="item">
+          <div class="q">1) Saya akan cemas jika kehabisan pulsa atau mencapai batas data bulanan.</div>
+          <div class="scale" data-key="i1"></div>
+        </div>
+        <div class="item">
+          <div class="q">2) Jika tidak ada sinyal data/Wi-Fi, saya akan terus-menerus memeriksa apakah sudah ada jaringan.</div>
+          <div class="scale" data-key="i2"></div>
+        </div>
+
+        <!-- Not being able to communicate -->
+        <div class="item">
+          <div class="q">3) Jika tidak membawa ponsel, saya akan merasa cemas karena tidak dapat segera berkomunikasi dengan keluarga/teman.</div>
+          <div class="scale" data-key="i3"></div>
+        </div>
+        <div class="item">
+          <div class="q">4) Jika tidak membawa ponsel, saya akan cemas karena tidak bisa dihubungi keluarga/teman.</div>
+          <div class="scale" data-key="i4"></div>
+        </div>
+        <div class="item">
+          <div class="q">5) Jika tidak membawa ponsel, saya akan gelisah karena tidak tahu bila ada orang yang mencoba menghubungi saya.</div>
+          <div class="scale" data-key="i5"></div>
+        </div>
+
+        <!-- Not being able to get information -->
+        <div class="item">
+          <div class="q">6) Jika tidak membawa ponsel, saya merasa gelisah karena akan tertinggal perkembangan terkini di media sosial/jaringan daring.</div>
+          <div class="scale" data-key="i6"></div>
+        </div>
+        <div class="item">
+          <div class="q">7) Jika tidak membawa ponsel, saya akan canggung karena tidak bisa mengecek notifikasi terbaru.</div>
+          <div class="scale" data-key="i7"></div>
+        </div>
+
+        <!-- Giving up convenience -->
+        <div class="item">
+          <div class="q">8) Jika tidak membawa ponsel, saya akan merasa gelisah karena tidak dapat menerima pesan teks dan panggilan.</div>
+          <div class="scale" data-key="i8"></div>
+          <div class="hint">Catatan: 8 item ini merangkum empat aspek NMP-Q.</div>
+        </div>
+
+        <div class="actions">
+          <button type="button" id="calc">Lihat Hasil</button>
+          <button type="reset" class="secondary" id="resetBtn">Reset</button>
+        </div>
+      </form>
+
+      <!-- RESULT -->
+      <div id="result" class="result" aria-live="polite"></div>
+
+      <details>
+        <summary>Bagaimana cara membaca skor?</summary>
+        <div class="hint">
+          Skor dihitung dari <strong>rata-rata</strong> 8 butir (rentang 1–4) dan ditampilkan juga sebagai POMP% (0–100).
+          <ul>
+            <li><strong>≤ 1,75</strong> = Rendah <span class="badge low">Low</span></li>
+            <li><strong>1,76–2,50</strong> = Sedang <span class="badge moderate">Moderate</span></li>
+            <li><strong>2,51–3,25</strong> = Tinggi <span class="badge high">High</span></li>
+            <li><strong>&gt; 3,25</strong> = Sangat Tinggi <span class="badge veryhigh">Very High</span></li>
+          </ul>
+          Ambang di atas bersifat <em>heuristik untuk edukasi publik</em> (studi adaptasi tidak menetapkan cut-off klinis).
+        </div>
+      </details>
+
+      <footer>
+        Sumber skala: Yildirim, C., &amp; Correia, A. P. (2015). <em>Computers in Human Behavior</em> – Nomophobia Questionnaire (NMP-Q).  
+        Adaptasi Indonesia (validasi & pemangkasan item) merujuk: Nurona, A., &amp; Safaria, T. (2025). <em>Journal of Technology in Behavioral Science</em>.  
+        © InterBeing Lab — gunakan untuk keperluan edukasi, mohon cantumkan sitasi sumber asli & adaptasi.
+      </footer>
+    </div>
+  </div>
+
+<script>
+  // ===== Likert 4 poin (SS,S,TS,TSS), semua item searah =====
+  const makeScale = (name) => {
+    const frag = document.createDocumentFragment();
+    const labels = {
+      1: 'Sangat Tidak Setuju',
+      2: 'Tidak Setuju',
+      3: 'Setuju',
+      4: 'Sangat Setuju'
+    };
+    for (let v=1; v<=4; v++){
+      const id = name+"_"+v;
+      const lab = document.createElement("label");
+      lab.setAttribute('for', id);
+      lab.innerHTML =
+        `<input type="radio" name="${name}" id="${id}" value="${v}" required>
+         <span>${v}</span> ${labels[v]}`;
+      frag.appendChild(lab);
+    }
+    return frag;
+  };
+
+  document.querySelectorAll('.scale').forEach(node=>{
+    node.appendChild(makeScale(node.dataset.key));
+  });
+
+  const byName = n => [...document.querySelectorAll(`input[name="${n}"]`)];
+  const keys = ['i1','i2','i3','i4','i5','i6','i7','i8'];
+  const calcBtn = document.getElementById('calc');
+  const result = document.getElementById('result');
+  const resetBtn = document.getElementById('resetBtn');
+
+  const interpret = avg => {
+    if (avg <= 1.75) return {label:'Rendah', cls:'low',
+      msg:'Keterikatan relatif rendah. Pertahankan kebiasaan sehat & batasan sadar.'};
+    if (avg <= 2.50) return {label:'Sedang', cls:'moderate',
+      msg:'Ada tanda keterikatan. Kurasi notifikasi, gunakan jeda terjadwal (mis. 20-20-20), dan buat area tanpa HP.'};
+    if (avg <= 3.25) return {label:'Tinggi', cls:'high',
+      msg:'Kecemasan tanpa ponsel cukup kuat. Prioritaskan “blok offline” harian (makan/tidur/kerja fokus) & atur ulang layar utama.'};
+    return {label:'Sangat Tinggi', cls:'veryhigh',
+      msg:'Risiko stres terkait ponsel. Pertimbangkan rencana “digital rest”, batasi akses cepat, dan latihan regulasi cemas (napas 4-7-8, jeda tubuh).'};
+  };
+
+  calcBtn.addEventListener('click', ()=>{
+    // Validasi semua terjawab
+    for (const k of keys){
+      if (!byName(k).some(r=>r.checked)){
+        alert('Masih ada pertanyaan yang belum dijawab.');
+        return;
+      }
+    }
+    // Hitung skor (1..4) dan POMP%
+    const vals = keys.map(k => Number(byName(k).find(r=>r.checked).value));
+    const sum  = vals.reduce((a,b)=>a+b,0);
+    const avg  = sum / vals.length;             // 1..4
+    const pomp = Math.round((avg-1) / (4-1) * 100); // 0..100
+
+    const {label, cls, msg} = interpret(avg);
+    result.style.display='block';
+    result.innerHTML = `
+      <strong>Hasil:</strong> Rata-rata <strong>${avg.toFixed(2)}</strong>
+      (POMP ≈ <strong>${pomp}%</strong>)
+      <span class="badge ${cls}">${label}</span>
+      <div style="margin-top:8px">${msg}</div>
+      <div class="hint" style="margin-top:10px">
+        Tips cepat: matikan notifikasi non-prioritas, pindahkan aplikasi pemicu scroll dari layar utama,
+        dan jadwalkan 2–3 sesi <em>offline blocks</em> per hari.
+      </div>
+    `;
+    result.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  resetBtn.addEventListener('click', ()=>{
+    result.style.display='none';
+    result.innerHTML='';
+  });
+</script>
+</body>
+</html>
