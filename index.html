@@ -3,28 +3,75 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Kuesioner Nomophobia (Versi Indonesia, 8 Item – 4 Poin)</title>
-<meta name="description" content="Kuesioner self-assessment Nomophobia versi Indonesia (8 item) berbasis adaptasi NMP-Q. Skala 1–4. Bukan alat diagnosis." />
+<title>Kuesioner Nomophobia (Versi Indonesia, 8 Item)</title>
+<meta name="description" content="Kuesioner self-assessment Nomophobia versi Indonesia (8 item) berbasis adaptasi NMP-Q. Skala 1–4. Tujuannya untuk refleksi pribadi, bukan diagnosis psikologis." />
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
 <style>
   :root{
-    --bg:#f7f8f9; --card:#ffffff; --ink:#1f2937; --muted:#6b7280; --accent:#0ea5e9;
-    --ok:#16a34a; --warn:#f59e0b; --bad:#ef4444;
+    /* Palet warna konsisten */
+    --bg:#f7f8fb;
+    --card:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --accent:#7c3aed;     /* ungu lembut */
+    --accent2:#0ea5e9;    /* biru lembut */
+    --ok:#16a34a;
+    --warn:#f59e0b;
+    --bad:#ef4444;
   }
   *{box-sizing:border-box}
-  body{margin:0; font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; color:var(--ink); background:var(--bg)}
+  body{
+    margin:0;
+    font:16px/1.65 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    color:var(--ink);
+    background:
+      radial-gradient(1400px 600px at -10% -20%, #e9d5ff40, transparent 60%),
+      radial-gradient(1200px 500px at 120% 0%, #bae6fd40, transparent 60%),
+      var(--bg);
+  }
   .wrap{max-width:880px; margin:32px auto; padding:0 16px}
-  .card{background:var(--card); border-radius:18px; padding:24px; box-shadow:0 6px 24px rgba(15,23,42,.06)}
-  h1{margin:.2rem 0 .6rem; font-size:clamp(24px,3.2vw,34px)}
+  .card{
+    background:var(--card);
+    border-radius:20px;
+    padding:24px;
+    box-shadow:0 8px 28px rgba(15,23,42,.08)
+  }
+  h1{
+    margin:.1rem 0 .5rem;
+    font-family:'Poppins', system-ui, -apple-system;
+    font-weight:700;
+    font-size:clamp(24px,3.2vw,34px);
+    letter-spacing:.2px;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
   p.lead{color:var(--muted); margin-top:0}
+
   .item{padding:16px 0; border-top:1px solid #eef0f3}
   .item:first-of-type{border-top:0}
   .q{font-weight:600}
-  .scale{display:flex; gap:8px; margin-top:10px; flex-wrap:wrap}
-  .scale label{flex:1 1 200px; display:flex; align-items:center; gap:8px; background:#f3f4f6; padding:10px 12px; border-radius:12px; cursor:pointer}
+
+  .scale{display:flex; gap:10px; margin-top:10px; flex-wrap:wrap}
+  .scale label{
+    flex:1 1 210px;
+    display:flex; align-items:center; gap:8px;
+    background:linear-gradient(180deg,#f8fafc,#f1f5f9);
+    padding:10px 12px; border-radius:12px; cursor:pointer;
+    border:1px solid #e5e7eb;
+    transition:transform .05s ease, box-shadow .15s ease;
+  }
+  .scale label:hover{box-shadow:0 3px 10px rgba(2,6,23,.06)}
   .scale input{accent-color:var(--accent)}
+
   .hint{color:var(--muted); font-size:13px}
   .actions{display:flex; gap:12px; margin-top:20px; flex-wrap:wrap}
-  button{border:0; background:var(--accent); color:#fff; padding:12px 16px; border-radius:12px; font-weight:700; cursor:pointer}
+  button{
+    border:0; color:#fff; padding:12px 16px; border-radius:12px; font-weight:700; cursor:pointer;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+  }
   button.secondary{background:#e5e7eb; color:#111827}
   .result{margin-top:20px; padding:16px; border-radius:14px; background:#f1f5f9; display:none}
   .badge{display:inline-block; padding:4px 10px; border-radius:999px; font-weight:700; font-size:13px; margin-left:8px}
@@ -39,11 +86,11 @@
 <body>
   <div class="wrap">
     <div class="card" role="region" aria-labelledby="title">
-      <h1 id="title">Kuesioner Nomophobia (8 Item – 4 Poin)</h1>
+      <h1 id="title">Kuesioner Nomophobia (8 Item)</h1>
       <p class="lead">
         Ini <strong>self-assessment</strong> singkat tentang rasa cemas/khawatir saat jauh dari ponsel.
-        Jawab jujur, <strong>1 = Sangat Tidak Setuju</strong> s.d. <strong>4 = Sangat Setuju</strong>.<br>
-        <span class="hint">Bukan alat diagnosis. Hasilnya untuk refleksi pribadi.</span>
+        Jawab jujur, <strong>1 = Sangat Tidak Setuju</strong> sampai <strong>4 = Sangat Setuju</strong>.<br>
+        <span class="hint">Bukan untuk diagnosis . Hasilnya untuk refleksi pribadi.</span>
       </p>
 
       <!-- FORM -->
@@ -101,7 +148,7 @@
       <details>
         <summary>Bagaimana cara membaca skor?</summary>
         <div class="hint">
-          Skor dihitung dari <strong>rata-rata</strong> 8 butir (rentang 1–4) dan ditampilkan juga sebagai POMP% (0–100).
+          Skor dihitung dari <strong>rata-rata</strong> 8 item (rentang 1–4) dan ditampilkan juga sebagai Percent of Maximum Possible (0–100).
           <ul>
             <li><strong>≤ 1,75</strong> = Rendah <span class="badge low">Low</span></li>
             <li><strong>1,76–2,50</strong> = Sedang <span class="badge moderate">Moderate</span></li>
@@ -113,15 +160,16 @@
       </details>
 
       <footer>
-        Sumber skala: Yildirim, C., &amp; Correia, A. P. (2015). <em>Computers in Human Behavior</em> – Nomophobia Questionnaire (NMP-Q).  
-        Adaptasi Indonesia (validasi & pemangkasan item) merujuk: Nurona, A., &amp; Safaria, T. (2025). <em>Journal of Technology in Behavioral Science</em>.  
-        © InterBeing Lab — gunakan untuk keperluan edukasi, mohon cantumkan sitasi sumber asli & adaptasi.
+        Sumber skala:<br>
+        Yildirim, C., &amp; Correia, A. P. (2015). Exploring the dimensions of nomophobia: Development and validation of a self-reported questionnaire. <em>Computers in Human Behavior, 49</em>, 130–137. <a href="https://doi.org/10.1016/j.chb.2015.02.059">https://doi.org/10.1016/j.chb.2015.02.059</a><br>
+        Nurona, A., &amp; Safaria, T. (2025). Adaptation of the Indonesian Version of the Nomophobia Scale (NMP-Q-10). <em>Journal of Technology in Behavioral Science, 10</em>, 553–564. <a href="https://doi.org/10.1007/s41347-024-00461-3">https://doi.org/10.1007/s41347-024-00461-3</a><br>
+        © InterBeing Lab — untuk keperluan edukasi; mohon cantumkan sitasi sumber asli &amp; adaptasi.
       </footer>
     </div>
   </div>
 
 <script>
-  // ===== Likert 4 poin (SS,S,TS,TSS), semua item searah =====
+  // ===== Likert 4 poin (SS,S,TS,TSS) =====
   const makeScale = (name) => {
     const frag = document.createDocumentFragment();
     const labels = {
@@ -152,15 +200,24 @@
   const result = document.getElementById('result');
   const resetBtn = document.getElementById('resetBtn');
 
+  // Interpretasi disederhanakan agar awam mudah paham
   const interpret = avg => {
-    if (avg <= 1.75) return {label:'Rendah', cls:'low',
-      msg:'Keterikatan relatif rendah. Pertahankan kebiasaan sehat & batasan sadar.'};
-    if (avg <= 2.50) return {label:'Sedang', cls:'moderate',
-      msg:'Ada tanda keterikatan. Kurasi notifikasi, gunakan jeda terjadwal (mis. 20-20-20), dan buat area tanpa HP.'};
-    if (avg <= 3.25) return {label:'Tinggi', cls:'high',
-      msg:'Kecemasan tanpa ponsel cukup kuat. Prioritaskan “blok offline” harian (makan/tidur/kerja fokus) & atur ulang layar utama.'};
-    return {label:'Sangat Tinggi', cls:'veryhigh',
-      msg:'Risiko stres terkait ponsel. Pertimbangkan rencana “digital rest”, batasi akses cepat, dan latihan regulasi cemas (napas 4-7-8, jeda tubuh).'};
+    if (avg <= 1.75) return {
+      label:'Rendah', cls:'low',
+      msg:'Hubunganmu dengan HP cukup santai. Pertahankan kebiasaan baik: notifikasi seperlunya, HP tidak dibawa ke tempat tidur.'
+    };
+    if (avg <= 2.50) return {
+      label:'Sedang', cls:'moderate',
+      msg:'Mulai terasa bergantung. Kurangi notifikasi, taruh HP di satu tempat saat fokus/istirahat, dan coba jeda 20-20-20.'
+    };
+    if (avg <= 3.25) return {
+      label:'Tinggi', cls:'high',
+      msg:'Cemas saat jauh dari HP cukup kuat. Tetapkan 2–3 blok offline harian (makan, tidur, kerja fokus), aktifkan Mode Fokus/Do Not Disturb.'
+    };
+    return {
+      label:'Sangat Tinggi', cls:'veryhigh',
+      msg:'Kecemasan terkait HP sangat tinggi. Buat rencana “digital rest” bertahap, batasi akses cepat ke aplikasi pemicu, latih teknik menenangkan (napas 4-7-8), dan minta dukungan orang terdekat bila perlu.'
+    };
   };
 
   calcBtn.addEventListener('click', ()=>{
@@ -174,7 +231,7 @@
     // Hitung skor (1..4) dan POMP%
     const vals = keys.map(k => Number(byName(k).find(r=>r.checked).value));
     const sum  = vals.reduce((a,b)=>a+b,0);
-    const avg  = sum / vals.length;             // 1..4
+    const avg  = sum / vals.length;                 // 1..4
     const pomp = Math.round((avg-1) / (4-1) * 100); // 0..100
 
     const {label, cls, msg} = interpret(avg);
@@ -185,7 +242,7 @@
       <span class="badge ${cls}">${label}</span>
       <div style="margin-top:8px">${msg}</div>
       <div class="hint" style="margin-top:10px">
-        Tips cepat: matikan notifikasi non-prioritas, pindahkan aplikasi pemicu scroll dari layar utama,
+        Tips cepat: nonaktifkan notifikasi non-prioritas, pindahkan aplikasi pemicu scroll dari layar utama,
         dan jadwalkan 2–3 sesi <em>offline blocks</em> per hari.
       </div>
     `;
