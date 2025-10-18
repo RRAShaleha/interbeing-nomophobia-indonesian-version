@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>InterBeing Lab • Nomophobia (NMP‑Q‑10 Indo) – Kuis Cepat</title>
+  <meta name="description" content="Kuis singkat untuk memetakan tingkat nomophobia (kecemasan tanpa ponsel). Dibuat InterBeing Lab berdasarkan NMP‑Q (Yildirim & Correia, 2015) dan adaptasi Indonesia (Nurona & Safaria, 2025)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0e0f12; --card:#15171c; --muted:#c7c9d1; --text:#eef0f7; --accent:#8fe3cf; --accent-2:#b8a6ff; --warn:#ffd166;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,#0e0f12,#12141a 50%,#0e0f12);color:var(--text);}
+    .wrap{max-width:860px;margin:0 auto;padding:24px}
+    header{display:flex;flex-direction:column;gap:12px;margin-bottom:18px}
+    .logo{display:flex;align-items:center;gap:10px}
+    .badge{font-size:12px;padding:2px 8px;border-radius:999px;background:rgba(143,227,207,.12);color:var(--accent);border:1px solid rgba(143,227,207,.35)}
+    h1{font-size: clamp(22px,3.4vw,32px);line-height:1.2;margin:0}
+    p{color:var(--muted);margin:0}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);backdrop-filter: blur(4px);border-radius:18px;padding:18px}
+    .grid{display:grid;gap:14px}
+    .intro{display:grid;gap:8px}
+    .progress{height:10px;background:#1f232b;border-radius:999px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
+    .bar{height:100%;width:0;background: linear-gradient(90deg,var(--accent),var(--accent-2)); transition:width .25s ease}
+
+    .q{display:grid;gap:12px}
+    .q h3{font-size:16px;margin:0}
+    .choices{display:grid;gap:10px}
+    .choice{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:12px;border-radius:12px;cursor:pointer}
+    .choice input{accent-color:var(--accent);transform:scale(1.1)}
+    .choice:hover{border-color:rgba(143,227,207,.5)}
+
+    .row{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{appearance:none;border:1px solid rgba(255,255,255,.14);background:#1a1d24;color:var(--text);padding:12px 14px;border-radius:12px;font-weight:600;cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none;color:#0b0d11}
+    .btn.ghost{background:transparent}
+    .btn:disabled{opacity:.5;cursor:not-allowed}
+
+    .result{display:none}
+    .pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:8px 12px;border-radius:999px;color:var(--muted);font-size:12px}
+    .score{font-size:40px;font-weight:800;letter-spacing:.5px}
+    .level{font-weight:800}
+    .tips{display:grid;gap:8px;margin-top:8px}
+    .tips li{margin-left:18px}
+    footer{margin:28px 0;color:var(--muted);font-size:12px}
+    a{color:var(--accent)}
+
+    .src{font-size:12px;opacity:.9}
+    .disclaimer{font-size:12px;color:#9aa0ac}
+
+    @media (min-width:820px){
+      .grid-2{grid-template-columns:1.2fr .8fr;align-items:start}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">
+        <span class="badge">InterBeing Lab</span>
+        <span class="badge">Beta</span>
+      </div>
+      <h1>Kuis Nomophobia (NMP‑Q‑10 • Versi Indonesia)</h1>
+      <p>Nomophobia = rasa cemas saat jauh dari ponsel atau tidak bisa menggunakannya. Isi 8 pernyataan berikut (±1 menit), lalu lihat hasilmu & saran praktis.</p>
+    </header>
+
+    <section class="card grid grid-2">
+      <div class="intro">
+        <div class="progress" aria-label="progres">
+          <div class="bar" id="bar"></div>
+        </div>
+        <div class="pill" id="counter">0/8 terjawab</div>
+        <form id="form" class="grid" autocomplete="off">
+
+          <!-- ITEM 1 -->
+          <div class="q" data-q="1">
+            <h3>1. Jika tidak ada <em>sinyal data</em> atau <em>Wi‑Fi</em>, saya akan terus‑menerus mengecek apakah sudah ada sinyal/jaringan.</h3>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="q1" value="1"> Sangat Tidak Setuju</label>
+              <label class="choice"><input type="radio" name="q1" value="2"> Tidak Setuju</label>
+              <label class="choice"><input type="radio" name="q1" value="3"> Setuju</label>
+              <label class="choice"><input type="radio" name="q1" value="4"> Sangat Setuju</label>
+            </div>
+          </div>
+
+          <!-- ITEM 2 -->
+          <div class="q" data-q="2">
+            <h3>2. Saya akan cemas jika kehabisan pulsa atau mencapai batas kuota data bulanan.</h3>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="q2" value="1"> Sangat Tidak Setuju</label>
+              <label class="choice"><input type="radio" name="q2" value="2"> Tidak Setuju</label>
+              <label class="choice"><input type="radio" name="q2" value="3"> Setuju</label>
+              <label class="choice"><input type="radio" name="q2" value="4"> Sangat Setuju</label>
+            </div>
+          </div>
+
+          <!-- ITEM 3 -->
+          <div class="q" data-q="3">
+            <h3>3. Jika tidak membawa ponsel, saya akan merasa cemas karena tidak dapat menghubungi keluarga dan/atau teman‑teman.</h3>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="q3" value="1"> Sangat Tidak Setuju</label>
+              <label class="choice"><input type="radio" name="q3" value="2"> Tidak Setuju</label>
+              <label class="choice"><input type="radio" name="q3" value="3"> Setuju</label>
+              <label class="choice"><input type="radio" name="q3" value="4"> Sangat Setuju</label>
+            </div>
+          </div>
+
+          <!-- ITEM 4 -->
+          <div class="q" data-q="4">
+            <h3>4. Jika tidak membawa ponsel, saya akan merasa khawatir karena keluarga dan/atau teman tidak dapat menghubungi saya.</h3>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="q4" value="1"> Sangat Tidak Setuju</label>
+              <label class="choice"><input type="radio" name="q4" value="2"> Tidak Setuju</label>
+              <label class="choice"><input type="radio" name="q4" value="3"> Setuju</label>
+              <label class="choice"><input type="radio" name="q4" value="4"> Sangat Setuju</label>
+            </div>
+          </div>
+
+          <!-- ITEM 5 -->
+          <div class="q" data-q="5">
+            <h3>5. Jika tidak membawa ponsel, saya akan merasa gelisah karena tidak dapat menerima pesan teks dan panggilan.</h3>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="q5" value="1"> Sangat Tidak Setuju</label>
+              <label class="choice"><input type="radio" name="q5" value="2"> Tidak Setuju</label>
+              <label class="choice"><input type="radio" name="q5" value="3"> Setuju</label>
+              <label class="choice"><input type="radio" name="q5" value="4"> Sangat Setuju</label>
+            </div>
+          </div>
+
+          <!-- ITEM 6 -->
+          <div class="q" data-q="6">
+            <h3>6. Jika tidak dapat menggunakan ponsel, saya takut akan tersesat di suatu tempat.</h3>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="q6" value="1"> Sangat Tidak Setuju</label>
+              <label class="choice"><input type="radio" name="q6" value="2"> Tidak Setuju</label>
+              <label class="choice"><input type="radio" name="q6" value="3"> Setuju</label>
+              <label class="choice"><input type="radio" name="q6" value="4"> Sangat Setuju</label>
+            </div>
+          </div>
+
+          <!-- ITEM 7 -->
+          <div class="q" data-q="7">
+            <h3>7. Jika tidak membawa ponsel, saya merasa gelisah karena akan tertinggal perkembangan terkini melalui media sosial dan jaringan daring.</h3>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="q7" value="1"> Sangat Tidak Setuju</label>
+              <label class="choice"><input type="radio" name="q7" value="2"> Tidak Setuju</label>
+              <label class="choice"><input type="radio" name="q7" value="3"> Setuju</label>
+              <label class="choice"><input type="radio" name="q7" value="4"> Sangat Setuju</label>
+            </div>
+          </div>
+
+          <!-- ITEM 8 -->
+          <div class="q" data-q="8">
+            <h3>8. Jika tidak membawa ponsel, saya akan merasa canggung karena tidak dapat memeriksa pemberitahuan terkini.</h3>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="q8" value="1"> Sangat Tidak Setuju</label>
+              <label class="choice"><input type="radio" name="q8" value="2"> Tidak Setuju</label>
+              <label class="choice"><input type="radio" name="q8" value="3"> Setuju</label>
+              <label class="choice"><input type="radio" name="q8" value="4"> Sangat Setuju</label>
+            </div>
+          </div>
+
+          <div class="row" style="margin-top:8px">
+            <button type="button" id="reset" class="btn ghost">Reset</button>
+            <button type="submit" id="submit" class="btn primary" disabled>Lihat Hasil</button>
+          </div>
+        </form>
+      </div>
+
+      <aside class="card" style="background:rgba(255,255,255,.03)">
+        <div class="grid" style="gap:10px">
+          <div class="pill">Tentang skala ini</div>
+          <p style="font-size:14px">Ini adalah <strong>kuis skrining</strong>, bukan diagnosis. Jawab sejujur mungkin untuk melihat kecenderungan pribadi terhadap <em>nomophobia</em> (kecemasan tanpa ponsel).</p>
+          <ul class="tips" style="font-size:14px">
+            <li>Skor tiap item: 1–4 (ST‑S‑SS).</li>
+            <li>Total skor: 8–32. Lebih tinggi ⇒ kecenderungan lebih kuat.</li>
+            <li>Privasi: jawaban tidak dikirim ke mana pun dalam versi mandiri ini.</li>
+          </ul>
+          <div class="src">
+            <div><strong>Sitasi:</strong></div>
+            <div>Yildirim, C., & Correia, A.‑P. (2015). <em>Computers in Human Behavior, 49</em>, 130–137.</div>
+            <div>Nurona, A., & Safaria, T. (2025). <em>Journal of Technology in Behavioral Science, 10</em>, 553–564.</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="result" class="card result" aria-live="polite">
+      <div class="grid">
+        <div class="pill">Hasil Kamu</div>
+        <div class="score" id="score">0</div>
+        <div id="band" class="level"></div>
+        <p id="explain"></p>
+        <ul class="tips" id="tips"></ul>
+        <div class="row">
+          <button class="btn" id="print">Simpan/Print PDF</button>
+          <button class="btn" id="share">Salin Ringkasan</button>
+        </div>
+        <p class="disclaimer">Ini bukan alat diagnosis. Jika kamu merasa cemas berlebih yang mengganggu aktivitas, pertimbangkan berkonsultasi dengan profesional.</p>
+      </div>
+    </section>
+
+    <footer>
+      © InterBeing Lab. Desain & logika kuis ini untuk tujuan edukasi publik. Kamu boleh membagikan tautan halaman ini dengan menyertakan atribusi ke InterBeing Lab.
+    </footer>
+  </div>
+
+  <script>
+    const form = document.getElementById('form');
+    const submitBtn = document.getElementById('submit');
+    const resetBtn = document.getElementById('reset');
+    const bar = document.getElementById('bar');
+    const counter = document.getElementById('counter');
+
+    const resultBox = document.getElementById('result');
+    const scoreEl = document.getElementById('score');
+    const bandEl = document.getElementById('band');
+    const explainEl = document.getElementById('explain');
+    const tipsEl = document.getElementById('tips');
+
+    const printBtn = document.getElementById('print');
+    const shareBtn = document.getElementById('share');
+
+    const totalItems = 8;
+
+    function answeredCount(){
+      let n = 0;
+      for(let i=1;i<=totalItems;i++){
+        if(form.querySelector(`input[name="q${i}"]:checked`)) n++;
+      }
+      return n;
+    }
+
+    function updateProgress(){
+      const n = answeredCount();
+      const pct = Math.round((n/totalItems)*100);
+      bar.style.width = pct + '%';
+      counter.textContent = `${n}/${totalItems} terjawab`;
+      submitBtn.disabled = n !== totalItems;
+    }
+
+    form.addEventListener('change', updateProgress);
+
+    form.addEventListener('submit', (e) =>{
+      e.preventDefault();
+      let sum = 0;
+      for(let i=1;i<=totalItems;i++){
+        const v = Number(form.querySelector(`input[name="q${i}"]:checked`).value);
+        sum += v;
+      }
+      renderResult(sum);
+      // scroll to result
+      resultBox.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+
+    function banding(sum){
+      // Rentang kategori: 8–16 rendah, 17–24 sedang, 25–32 tinggi
+      if(sum <= 16) return 'rendah';
+      if(sum <= 24) return 'sedang';
+      return 'tinggi';
+    }
+
+    function renderResult(sum){
+      const band = banding(sum);
+      scoreEl.textContent = sum;
+      bandEl.textContent = band === 'rendah' ? 'Kecenderungan Nomophobia: Rendah' : band === 'sedang' ? 'Kecenderungan Nomophobia: Sedang' : 'Kecenderungan Nomophobia: Tinggi';
+
+      let explain = '';
+      let tips = [];
+      if(band === 'rendah'){
+        explain = 'Kamu cenderung nyaman saat jauh dari ponsel dan dapat mengelola keterhubungan tanpa banyak kecemasan.';
+        tips = [
+          'Pertahankan kebiasaan sehat: matikan notifikasi non‑esensial, simpan ponsel di luar kamar saat tidur.',
+          'Latih “offline mikro” 10–15 menit/hari agar ketahanan tetap terjaga.'
+        ];
+      } else if(band === 'sedang'){
+        explain = 'Ada beberapa sinyal kecemasan terkait koneksi/akses. Dengan strategi ringan, kamu bisa menurunkannya.';
+        tips = [
+          'Gunakan “Aturan 20‑20‑20”: jeda 20 detik tiap 20 menit, alihkan pandang 6 meter.',
+          'Buat 1–2 jam “zona tanpa ponsel” (makan, sebelum tidur).',
+          'Kelompokkan notifikasi menjadi batch tiap 30–60 menit (matikan push real‑time).'
+        ];
+      } else {
+        explain = 'Kecenderungan cemas tanpa ponsel cukup kuat. Fokus pada pengurangan kecemasan dan penguatan kontrol diri bertahap.';
+        tips = [
+          'Mulai dari pemicu terbesar: misalnya notifikasi pesan — ubah ke ringkas, jadwalkan pengecekan.',
+          'Coba “offline bertahap”: 5→10→15 menit tanpa ponsel, tambah perlahan.',
+          'Bangun alternatif cepat: kartu buku, jalan singkat, napas 4‑6 untuk menenangkan sistem saraf.'
+        ];
+      }
+      explainEl.textContent = explain;
+      tipsEl.innerHTML = tips.map(t=>`<li>${t}</li>`).join('');
+      resultBox.style.display = 'block';
+    }
+
+    resetBtn.addEventListener('click', ()=>{
+      form.reset();
+      updateProgress();
+      resultBox.style.display = 'none';
+    });
+
+    printBtn.addEventListener('click', ()=>{ window.print(); });
+
+    shareBtn.addEventListener('click', async ()=>{
+      const sum = scoreEl.textContent;
+      const text = `Hasil Kuis Nomophobia – InterBeing Lab\nSkor: ${sum} (rentang 8–32).\nKategori: ${bandEl.textContent}.\nCoba juga kuisnya di halaman InterBeing Lab.`;
+      try{
+        await navigator.clipboard.writeText(text);
+        shareBtn.textContent = 'Tersalin ✓';
+        setTimeout(()=> shareBtn.textContent = 'Salin Ringkasan', 1600);
+      }catch(err){
+        alert('Tidak dapat menyalin otomatis. Silakan salin manual:\n\n'+text);
+      }
+    });
+
+    // init
+    updateProgress();
+  </script>
+</body>
+</html>
