@@ -84,6 +84,7 @@
   .bar.sedang{background:linear-gradient(90deg, #f59e0b, #fde68a)}
   .bar.tinggi{background:linear-gradient(90deg, #ef4444, #fecaca)}
   .bar.sangat{background:linear-gradient(90deg, #be185d, #fbcfe8)}
+  .bar-labels{display:flex; justify-content:space-between; font-size:13px; color:#64748b; margin-top:6px}
 
   details{margin-top:10px}
   .hint{color:var(--muted); font-size:13px}
@@ -251,11 +252,12 @@
       </div>
 
       <div style="margin-top:12px">
-        <div style="display:flex; justify-content:space-between; font-size:13px; color:#64748b; margin-bottom:4px">
-          <span>8</span><span>32</span>
-        </div>
         <div class="progress" aria-hidden="true">
           <div class="bar ${barClass}" style="width:${barPct}%"></div>
+        </div>
+        <div class="bar-labels">
+          <span>Rendah</span>
+          <span>Sangat Tinggi</span>
         </div>
       </div>
 
