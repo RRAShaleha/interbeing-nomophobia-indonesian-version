@@ -1,7 +1,7 @@
 # Kuesioner Nomophobia — Versi Indonesia (NMP-Q-10)
 
 **Kuesioner reflektif interaktif** berdasarkan **adaptasi Bahasa Indonesia dari Nomophobia Questionnaire (NMP-Q)**.  
-Alat ini dirancang untuk membantu individu **merefleksikan hubungan mereka dengan penggunaan ponsel**, bukan untuk diagnosis psikologis.
+Kuesioner ini dirancang untuk membantu individu **merefleksikan hubungan mereka dengan penggunaan ponsel**, bukan untuk diagnosis psikologis.
 
 🔗 **Lihat versi interaktif:**  
 [https://rrashaleha.github.io/interbeing-nomophobia-indonesian-version/](https://rrashaleha.github.io/interbeing-nomophobia-indonesian-version/)
