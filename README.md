@@ -24,7 +24,6 @@ Kuesioner ini menilai sejauh mana seseorang merasa cemas, gelisah, atau tidak ny
 Hasil dihitung secara otomatis dan ditampilkan dalam tiga bentuk:
 - **Total skor (8–32)**  
 - **Rata-rata (1–4)**  
-- **_POMP_% (Percent of Maximum Possible, 0–100)**  
 
 > ⚠️ Kuesioner ini hanya untuk **refleksi pribadi dan edukasi**, **bukan** alat diagnosis klinis.
 
